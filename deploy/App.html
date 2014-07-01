@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>retrieveHierarchy</title>
+
+    <script type="text/javascript" src="/apps/2.0rc3/sdk.js"></script>
+
+    <script type="text/javascript">
+        Rally.onReady(function () {
+                Ext.define("CustomApp",{extend:"Rally.app.App",componentCls:"app",items:{html:'<a href="https://help.rallydev.com/apps/2.0rc3/doc/">App SDK 2.0rc3 Docs</a>'},launch:function(){var that=this;Ext.create("Rally.data.wsapi.TreeStoreBuilder").build({models:["userstory"],autoLoad:!0,filters:[{property:"Name",operator:"contains",value:"story"}],enableHierarchy:!0}).then({success:function(store){var grid=Ext.create("Ext.Container",{items:[{xtype:"rallytreegrid",columnCfgs:["Name","Owner"],store:store}]});that.add(grid)}})}});
+
+            Rally.launchApp('CustomApp', {
+                name:"retrieveHierarchy",
+	            parentRepos:""
+            });
+
+        });
+    </script>
+
+
+    <style type="text/css">
+        .app {
+     /* Add app styles here */
+}
+
+    </style>
+</head>
+<body></body>
+</html>
